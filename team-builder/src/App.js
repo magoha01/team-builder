@@ -1,8 +1,9 @@
 
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Member from './Components/Member'
 import MemberForm from './Components/MemberForm'
-
+import styled from 'styled-components'
+import './App.css';
 
 const membersList = [
 
@@ -39,6 +40,10 @@ const initialFormValues = {
   email: '',
   role: '',
 }
+
+const H1 = styled.h1`
+  font-size: 4rem;
+`
 
 export default function App ( props ) {
 
@@ -78,7 +83,7 @@ export default function App ( props ) {
       role: formValues.role,
     }
     if (!newMember.name || !newMember.email || !newMember.role) {
-      setError("All fields are required, ya chump!!!");
+      setError("All fields required.");
     } else {
       setError("");
       setMembers(members.concat(newMember));
@@ -89,7 +94,7 @@ export default function App ( props ) {
   return (
 
     <div className='container'>
-      <h1>Form App</h1>
+      <H1>Become a Member </H1>
       <h2>{error}</h2>
       <MemberForm
         values={formValues}

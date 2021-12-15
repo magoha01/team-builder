@@ -1,6 +1,46 @@
 import React from 'react'
+import styled from 'styled-components'
 
-export default function FriendForm(props) {
+const FormDiv = styled.div`
+display: flex;
+flex-flow: column wrap;
+width: 100%;
+align-content:center;
+justify-content: center;
+align-items: center;
+padding: 1%;
+background-color: black;
+color: white;
+width: 50%;
+
+margin: 0 25% ;
+
+
+input{
+   width: 100%;
+   margin: 5%;
+
+}
+
+label{
+    display: flex;
+    font-size: 1.5rem;
+    margin: 1%;
+}
+
+select{
+    margin: 2%;
+    padding: 1%;
+}
+`
+const Submit = styled.button`
+    background-color: green;
+    color: white;
+    padding: 10%;
+ 
+`
+
+export default function MemberForm(props) {
   // THESE ARE THE **EXACT PROPS** FriendForm EXPECTS!!!
   const { values, update, submit } = props
 
@@ -25,11 +65,11 @@ export default function FriendForm(props) {
 
   return (
     <form className='form container' onSubmit={onSubmit}>
-      <div className='form-group inputs'>
+      <FormDiv className='form-group inputs'>
         {/* ////////// TEXT INPUTS ////////// */}
         {/* ////////// TEXT INPUTS ////////// */}
         {/* ////////// TEXT INPUTS ////////// */}
-        <label>Name
+        <label>Name:
           {/* 🔥 STEP 3 - Make an input of type `text` for username.
               Controlled inputs need `value` and `onChange` props.
               Inputs render what they're told - their current value comes from app state.
@@ -44,7 +84,7 @@ export default function FriendForm(props) {
               />
         </label>
 
-        <label>Email
+        <label>Email:
           {/* 🔥 STEP 4 - Make an input of type `email` or `text` for email. */}
               <input
                 name="email"
@@ -58,7 +98,7 @@ export default function FriendForm(props) {
         {/* ////////// DROPDOWN ////////// */}
         {/* ////////// DROPDOWN ////////// */}
         {/* ////////// DROPDOWN ////////// */}
-        <label>Role
+        <label>Role: 
           {/* 🔥 STEP 5 - Make dropdown for role. */}
               <select value={values.role} name="role" onChange={onChange}>
                 <option value="">-- Select a Role --</option>
@@ -70,9 +110,10 @@ export default function FriendForm(props) {
         </label>
 
         <div className='submit'>
-          <button>submit</button>
+          <Submit>Submit</Submit>
         </div>
-      </div>
+      </FormDiv>
     </form>
+
   )
 }

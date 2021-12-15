@@ -1,4 +1,10 @@
 import React from 'react'
+import styled from 'styled-components'
+
+const Div = styled.h2`
+text-align: center;
+`
+
 
 export default function Member(props) {
   const { details } = props
@@ -8,10 +14,12 @@ export default function Member(props) {
   }
 
   return (
-    <div className='member container'>
-      <h2>{details.name}</h2>
-      <p>Email: {details.email}</p>
-      <p>Role: {details.role}</p>
-    </div>
+      
+    <Div>
+        <h2>{details.name}</h2>
+        <p>Email: {details.email}</p>
+        <p>Role: {details.role}</p>
+    </Div>
+  
   )
 }
