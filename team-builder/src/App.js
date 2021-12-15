@@ -54,35 +54,37 @@ export default function App ( props ) {
     setFormValues({ ...formValues, [inputName]: inputValue });
   }
 
-  const change = (evt) => {
-    const { value, name } = evt.target;
-    /**
-     * const value = evt.target.value
-     * const name = evt.target.name
-     */
-    setFormValues({ ...formValues, [name]: value });
-    /**
-     * formValues = {
-     *  petName: "",
-     *  petType: "",
-     * }
-     */
-  }
+  // const change = (evt) => {
+  //   const { value, name } = evt.target;
+  //   /**
+  //    * const value = evt.target.value
+  //    * const name = evt.target.name
+  //    */
+  //   setFormValues({ ...formValues, [name]: value });
+  //   /**
+  //    * formValues = {
+  //    *  petName: "",
+  //    *  petType: "",
+  //    * }
+  //    */
+  // }
 
-  const submitForm = (evt) => {
-    evt.preventDefault() 
+  const submitForm = () => {
+   
  
     const newMember= {
-      username: formValues.name.trim(),
+      name: formValues.name.trim(),
       email: formValues.email.trim(),
       role: formValues.role,
     }
     if (!newMember.name || !newMember.email || !newMember.role) {
       setError("All fields are required, ya chump!!!");
-    } else {setError("")}
-    setMembers(members.concat(newMember));
-    setFormValues(initialFormValues);
-  }
+    } else {
+      setError("");
+      setMembers(members.concat(newMember));
+      setFormValues(initialFormValues);
+    }
+}
 
   return (
 
@@ -90,7 +92,6 @@ export default function App ( props ) {
       <h1>Form App</h1>
       <h2>{error}</h2>
       <MemberForm
-       
         values={formValues}
         update={updateForm}
         submit={submitForm}
